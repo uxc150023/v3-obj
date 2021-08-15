@@ -1,27 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <el-config-provider :locale="locale">
+    <slot name="app"></slot>
+  </el-config-provider>
+  <div>
+    <router-view />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+<style></style>
 
-export default defineComponent({
-  name: 'App',
+<script>
+//引入vue方法
+import { ElConfigProvider } from "element-plus";
+//中文包
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
+
+export default {
+  name: "layout",
   components: {
-    HelloWorld
-  }
-})
+    [ElConfigProvider.name]: ElConfigProvider,
+  },
+  setup() {
+    let locale = zhCn;
+    return {
+      locale,
+    };
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped lang="scss"></style>
