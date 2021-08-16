@@ -10,6 +10,12 @@ export function loginPagePreloading(): Promise<any> {
   });
 }
 
+export function framePagePreloading(): Promise<any> {
+  return import("./frame/frame.vue").catch((error) => {
+    return dealOccurred(error, "Frame");
+  });
+}
+
 /**
  * 处理错误
  */
