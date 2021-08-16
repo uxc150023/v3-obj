@@ -93,4 +93,6 @@ export const plugins = [
   ElNotification,
   ElDatePicker,
   ElButton,
+  ElCarousel,
+  ElCarouselItem,
 ];
